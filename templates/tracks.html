@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tracks for "{{ vibe }}"</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Tracks for "{{ vibe }}"</h1>
+    <ul>
+        {% for track in tracks %}
+        <li>
+            <img src="{{ track.image }}" alt="Album Art" style="width: 50px; height: 50px;">
+            <a href="{{ track.url }}" target="_blank">{{ track.name }}</a> by {{ track.artist }}
+            <br>
+            <iframe src="https://open.spotify.com/embed/track/{{ track.uri.split(':')[-1] }}" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('home') }}">Go Back</a>
+</body>
+</html>
