@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ genre }}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>All Tracks in {{ genre }}</h1>
+        <div class="track-container">
+            {% for track in tracks %}
+                <div class="track">
+                    <iframe src="https://open.spotify.com/embed/track/{{ track['uri'].split(':')[-1] }}" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                    <p>{{ track['name'] }} by {{ track['artist'] }}</p>
+                    <p>Popularity: {{ track['popularity'] }}</p>
+                    <p>Times Played: {{ track['times_played'] }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <a href="/genres">Go Back</a>
+    </div>
+</body>
+</html>
